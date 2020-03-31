@@ -45,6 +45,7 @@ li{
 
 .navbar{
     background: var(--primary-color);
+    min-height: 5rem;
 }
 
 .navbar-toggler{
@@ -91,7 +92,7 @@ li{
     font-size: 5rem;
 }
 
-#about,#enjoy, #foods{
+#about,#enjoy, #foods,#register{
     min-height: 100vh;
 }
 
@@ -196,3 +197,116 @@ li{
     text-align: center;
     color: var(--color-white);
 }
+
+/*------------------------------------*/
+
+/************->REGISTER PAGE*********<-*/
+
+#register{
+    padding: 3rem 0;
+    background: var(--color-white);
+}
+
+#register h3{
+    font-size: 4rem;
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+#register p{
+    width: 60%;
+    margin: 0 auto;
+}
+
+.register-form{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 3rem;
+}
+
+.input_contact{
+    width: 100%;
+    padding: 7px 0 7px 7px;
+    border: 1px solid var(--primary-color);
+    border-radius: 3px;
+    color: var(--primary-color);
+}
+
+.input_contact:focus{
+    outline-color: var(--primary-color);
+}
+/*------------------------------------*/
+
+/*---->ORDERS<------*/
+
+.handler-box{
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.form-add{
+    padding: 2rem;
+    border-radius: 7px;
+    flex: 1;
+    background: var(--color-white);
+}
+
+.form-add h3{
+    font-size: 4rem;
+}
+
+.form-input{
+    display: block;
+    width: 100%;
+    padding: .5rem .7rem;
+    outline: none;
+    border:1px solid var(--white-hover);
+    transition: var(--default-transition);
+    border-radius: 7px;
+}
+
+.form-input:focus{
+    border: 1px solid var(--primary-color);
+}
+
+.bg-image{
+    flex: 1;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.342),black),url('../images/img16.jpg') center no-repeat;
+    background-size: cover;
+}
+
+.bg-image > h3{
+    font-size: 3.5rem;
+    color: var(--color-white);
+}
+
+/*---->OWN-ORDERS<------*/
+#own-order{
+    padding: 4rem 0;
+}
+
+#own-order h3{
+    font-size: 4rem;
+    margin-bottom: 4rem;
+}
+
+.table{
+    margin-bottom: 4rem;
+}
+
+/*------------------------------------*/
+
+/*-----> MEDIA QUERIES <-----*/
+
+
+@media screen and (max-width: 769px){
+    .handler-box{
+        flex-direction: column-reverse;
+    }
+}
+/*------------------------------------*/
