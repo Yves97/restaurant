@@ -1,0 +1,26 @@
+Backend Choisi : PHP 7
+
+_Nom du projet : HyviFOOD
+_fonctionalié:
+    --> Côté user:
+    _Achat d'un aliment (Principale){
+    * L'utilisateur doit obligatoirement se connecter (Pour que l'admin puisse savoir de qui il s'agit),
+    * Nous aurons besoin comme information son nom d'utilisateur,son numéro de telephone,son email(ci-possible),son sexe.
+    * Après l'inscription il sera redirigé vers la page d'accueil
+    * Il aura la possiblité de commander un plat (ou plusieurs)
+    _Informations sur le plat: {
+        ^Nom du plat 
+        ^Description
+        ^Prix
+        ^Image du plat
+        ^Button d'achat
+    } 
+    --> Coté admin
+    _Liste des commandes{
+        _Nom de L'utilisateur et consor
+        _
+    }
+    _Ajout D'Aliment
+    _Supression D'aliment
+    _Mise A jour D'aliment
+}
