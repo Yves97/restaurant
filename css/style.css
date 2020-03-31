@@ -98,6 +98,7 @@ li{
 .about-content, .enjoy-content{
     height: 100%;
     display: flex;
+    background: var(--color-white);
 }
 
 .enjoy-content{
@@ -180,4 +181,18 @@ li{
     color: var(--color-white);
     font-weight: bold;
     color: var(--primary-color);
+}
+
+#footer{
+    padding: 2.5rem 0;
+    background: var(--color-black);
+    position: sticky;
+    bottom: 0;
+    z-index: -1;
+}
+
+#footer h3{
+    font-size: 3rem;
+    text-align: center;
+    color: var(--color-white);
 }
