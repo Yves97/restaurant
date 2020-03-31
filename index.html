@@ -7,18 +7,52 @@
     
     <!--***CSS ressources***-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="ressources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="ressources/css/style.css">
-    <title>VueJs</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>HyviFood</title>
 </head>
 <body>
+    <header id="header">
+        <nav class="navbar navbar-expand-sm fixed-top">
+            <a class="navbar-brand" href="#">HyviFood</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                aria-expanded="false" aria-label="Toggle navigation"></button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Commander</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Voir mes commandes</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="welcome-box"  style="background: url('images/img2.jpg') center no-repeat;background-size: cover;">
+            <div class="welcome-text">
+                <h3>Bienvenu(e) Chez HiVyFood</h3>
+            </div>
+        </div>
+    </header>
+    <section id="about">
+        <div class="about-content">
+            <div class="about-text">
+                <div class="sticky-text">
+                    <h3>A Propos</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat esse est, voluptates eius nesciunt ratione reprehenderit labore illum unde qui eligendi quaerat? Neque alias animi, eum nesciunt iure nostrum tempora.</p>
+                    <a href="#">
+                        <button class="btn-more">En Savoir Plus</button>
+                    </a>
+                </div>
+            </div>
+            <div style="height:100vh;width:100%;background: url('images/img10.jpg') center no-repeat;background-size: cover;flex:1"></div>
+        </div>
+    </section>
     
-
-
     <!--***JS ressources***-->
-    <script src="ressources/js/jquery.js"></script>
-    <script src="ressources/js/bootstrap.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <!-- <script src="js/vue.js"></script> -->
-    <script src="ressources/js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

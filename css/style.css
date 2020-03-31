@@ -1,4 +1,14 @@
 /************->VARIABLES*********<-*/
+
+:root{
+    --primary-color: #5d4954;
+    --color-white: #fff;
+    --white-hover:antiquewhite;
+    --color-black:#000;
+    --default-transition:all .3s;
+}
+
+
 /*------------------------------------*/
 
 
@@ -21,4 +31,96 @@ body{
     box-sizing: border-box;
     font-size: 1.6rem;
 }
+
+a,a:hover{
+    text-decoration: none;
+}
+
+li{
+    list-style: none;
+}
 /*------------------------------------*/
+
+/************->INDEX PAGE*********<-*/
+
+.navbar{
+    background: var(--primary-color);
+}
+
+.navbar-toggler{
+    background-color: var(--white-hover);
+}
+
+.nav-item{
+    margin-left: 2rem;
+}
+.nav-link, .navbar-brand{
+    color: var(--color-white) !important;
+    transition:var(--default-transition);
+}
+
+.nav-link:hover, .navbar-brand{
+    color: var(--white-hover) !important;
+}
+
+.navbar-brand{
+    font-weight: bold;
+}
+
+.welcome-box{
+    height: 100vh;
+    position: relative;
+    padding: 1rem;
+}
+
+.welcome-text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 90%;
+    background: #5d4954a1;
+    /* background: black; */
+    padding: 5rem;
+    border-radius: 7rem .7rem 4.5rem / 1rem 4rem 1.5rem;
+}
+
+.welcome-text h3{
+    color: var(--color-white);
+    text-align: center;
+    font-size: 5rem;
+}
+
+#about{
+    min-height: 100vh;
+}
+
+
+.about-content{
+    height: 100%;
+    display: flex;
+}
+
+.about-text{
+    flex: 1;
+    padding: 1rem;
+}
+
+.sticky-text{
+    position: sticky;
+    top: 50%;
+}
+
+.btn-more{
+    border: 1px solid var(--primary-color);
+    background: var(--primary-color);
+    color: var(--color-white);
+    cursor: pointer;
+    padding: .7rem;
+    transition: var(--default-transition);
+}
+
+.btn-more:hover{
+    background: var(--color-white);
+    color: var(--primary-color);
+}
