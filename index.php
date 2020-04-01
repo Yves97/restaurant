@@ -1,3 +1,24 @@
+<?php
+session_start();
+require 'php/database.php';
+    if(isset($_GET['id'])){
+    // require 'php/register.php';
+    $query = $connexion->prepare("SELECT * FROM food");
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    $query3 = $connexion->prepare("SELECT * FROM users WHERE id = ?");
+    $query3->execute(array($_GET['id']));
+    $result3 = $query3->fetch();
+    $_SESSION['id'] = $result3['id']
+    // $_SESSION['id'] = $result2['id'];
+    // $_SESSION['username'] = $result2['username'];
+    // var_dump($_SESSION['id']);
+    // var_dump($_SESSION['username']);
+    // $_SESSION['username'] = $result2['username'];
+    // render_array($result2);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +27,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
     <!--***CSS ressources***-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <title>HyviFood</title>
@@ -20,18 +41,24 @@
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" href="php/register.html">S'enregister</a>
+                        <a class="nav-link" href="php/register.php">S'enregister</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="php/ownOrderList.html">Voir mes commandes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="php/order.html">Passer une commande</a>
+                        <a class="nav-link" href="php/order.php">Passer une commande</a>
                     </li>
                 </ul>
+                <p class="username"><?= 'Hello!  '.$result3['username'] ?></p>
+            </div>
+            <div>
+                <form action="php/disconnect.php" method="POST">
+                    <button type="submit">deconnection</button>
+                </form>
             </div>
         </nav>
-        <div class="welcome-box"  style="background: url('images/img2.jpg') center no-repeat;background-size: cover;">
+        <div class="welcome-box" style="background: url('images/img2.jpg') center no-repeat;background-size: cover;">
             <div class="welcome-text">
                 <h3>Bienvenu(e) Chez HiVyFood</h3>
             </div>
@@ -67,50 +94,19 @@
             <h3>Nos Plats</h3>
             <div class="main-food-cards">
                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                        <div class="card-food" style="background: linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.8)),url('images/img4.jpg') center no-repeat;background-size: cover;">
-                            <div class="card-info">
-                                <h3>Food Name</h3>
-                                <p>7000 Fcfa</p>
-                                <a href="#">
-                                    <button class="btn-more">Commander</button>
-                                </a>
+                <?php foreach($result as $key => $value): ?>
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                            <div class="card-food" style="background: linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.8)),url(images/<?= $value['imgfood'] ?>) center no-repeat;background-size: cover;">
+                                <div class="card-info">
+                                    <h3><?=  $value['foodname'] ?></h3>
+                                    <p><?= $value['price'] ?></p>
+                                    <!-- <a href="#">
+                                        <button class="btn-more">Commander</button>
+                                    </a> -->
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                        <div class="card-food" style="background: linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.8)),url('images/img11.jpg') center no-repeat;background-size: cover;">
-                            <div class="card-info">
-                                <h3>Food Name</h3>
-                                <p>7000 Fcfa</p>
-                                <a href="#">
-                                    <button class="btn-more">Commander</button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                        <div class="card-food" style="background: linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.8)),url('images/img12.jpg') center no-repeat;background-size: cover;">
-                            <div class="card-info">
-                                <h3>Food Name</h3>
-                                <p>7000 Fcfa</p>
-                                <a href="#">
-                                    <button class="btn-more">Commander</button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                        <div class="card-food" style="background: linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.8)),url('images/img21.jpg') center no-repeat;background-size: cover;">
-                            <div class="card-info">
-                                <h3>Food Name</h3>
-                                <p>7000 Fcfa</p>
-                                <a href="#">
-                                    <button class="btn-more">Commander</button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                <?php endforeach ?>
                 </div>
             </div>
         </div>
@@ -127,3 +123,11 @@
     <script src="js/main.js"></script>
 </body>
 </html>
+
+<?php 
+    }
+    else{
+        header('Location:php/register.php');
+    }  
+    
+?>

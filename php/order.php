@@ -1,3 +1,9 @@
+<?php 
+session_start();
+require 'database.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +20,7 @@
 <body>
     <header id="header">
         <nav class="navbar navbar-expand-sm fixed-top">
-            <a class="navbar-brand" href="../index.html">HyviFood</a>
+            <a class="navbar-brand" href="../index.php">HyviFood</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
                 aria-expanded="false" aria-label="Toggle navigation"></button>
             <div class="collapse navbar-collapse" id="collapsibleNavId">
@@ -41,7 +47,7 @@
         <div class="handler-box">
             <div class="form-add">
                 <form method="" action="">
-                    <h3>Commandes de Yves Kouadio</h3>
+                    <h3>Commandes de <?= $_SESSION['username']   ?></h3>
                     <div class="form-group">
                         <label for="tit">Nombre de plat</label>
                         <input type="number" class="form-input" id="tit">

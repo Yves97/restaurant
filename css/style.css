@@ -39,6 +39,11 @@ a,a:hover{
 li{
     list-style: none;
 }
+
+.err-msg{
+    color: red !important;
+    margin: 2rem 0 2rem;
+}
 /*------------------------------------*/
 
 /************->INDEX PAGE*********<-*/
@@ -46,6 +51,7 @@ li{
 .navbar{
     background: var(--primary-color);
     min-height: 5rem;
+    position: relative;
 }
 
 .navbar-toggler{
@@ -66,6 +72,20 @@ li{
 
 .navbar-brand{
     font-weight: bold;
+}
+
+.collapse{
+    position: relative !important;
+}
+
+.username{
+    padding: 0 1rem;
+    color: var(--color-white);
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    
 }
 
 .welcome-box{
@@ -299,6 +319,7 @@ li{
     margin-bottom: 4rem;
 }
 
+
 /*------------------------------------*/
 
 /*-----> MEDIA QUERIES <-----*/
@@ -307,6 +328,10 @@ li{
 @media screen and (max-width: 769px){
     .handler-box{
         flex-direction: column-reverse;
+    }
+    .about-content, .enjoy-content{
+        display: block;
+        /* flex-direction: column-reverse; */
     }
 }
 /*------------------------------------*/

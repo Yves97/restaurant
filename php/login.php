@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
     <!--***CSS ressources***-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <title>HyviFood</title>
@@ -14,7 +17,7 @@
 <body>
     <header id="header">
         <nav class="navbar navbar-expand-sm fixed-top">
-            <a class="navbar-brand" href="../index.html">HyviFood</a>
+            <a class="navbar-brand" href="../index.php">HyviFood</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
                 aria-expanded="false" aria-label="Toggle navigation"></button>
             <div class="collapse navbar-collapse" id="collapsibleNavId">
@@ -36,24 +39,23 @@
     </header>
     <section id="register">
         <div class="container">
-            <h3>Enregistrement</h3>
+            <h3>Connection</h3>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem modi quas enim natus voluptatum iure voluptates cum optio fugiat rem suscipit aliquid, voluptas recusandae error veniam aspernatur, nemo omnis! Dignissimos?</p>
             <div class="register-form">
-                <form action="" method="">
+                <form action="" method="POST">
                     <div class="form-group">
-                        <input class="input_contact" type="text" name="" placeholder="Username">
+                        <input class="input_contact" type="email" name="email" placeholder="Email">
                     </div>
                     <div class="form-group">
-                        <input class="input_contact" type="text" name="" placeholder="Numéro de téléphone">
+                        <input class="input_contact" type="password" name="password" placeholder="Votre Mot de Passe">
                     </div>
-                    <div class="form-group">
-                        <input class="input_contact" type="password" name="" placeholder="Votre Mot de Passe">
-                    </div>
-                    <div class="form-group">
-                        <input class="input_contact" type="email" placeholder="Email">
-                    </div>
-                        <button type="submit" class="btn-more">SOUMETTRE</button>
+                    <button type="submit" class="btn-more">Se Connecter</button>
                 </form>
+                <?php
+                    if(isset($err)){
+                        echo $err;
+                    }
+                ?>
             </div>
         </div>
     </section>
@@ -69,3 +71,42 @@
     <script src="../js/main.js"></script>
 </body>
 </html>
+
+<?php
+session_start();
+    require 'database.php';
+    // $query2 = $connexion->prepare("SELECT * FROM users WHERE id = ?");
+    //         $query2->execute(array($_GET['id']));
+    //         $result2 = $query2->fetch();
+    //         $_SESSION['id'] = $result2['id'];
+    //         $_SESSION['username'] = $result2['username'];
+    if(!empty($_POST) && isset($_POST))
+    {
+        $email = secure_data($_POST['email']);
+        $password = secure_data($_POST['password']);
+
+        if ($email == '' || $password == '')
+        {
+            $err = '<h2 class="err-msg">Merci de bien remplir ces deux champs</h2>';
+        }
+        else
+        {
+            $request = $connexion->prepare("SELECT * FROM users WHERE email = ? AND password = ?");
+            $request->execute(array($email, $password));
+            $result2 = $request->fetch();
+            // render_array($result2);
+            $_SESSION['id'] = $result2['id'];
+            header('Location:../index.php?id='.$_SESSION['id']);
+            //var_dump($tab);
+            //$_SESSION = $tab;
+            // header("Location:index.php?id=".$_SESSION['id']);
+        }
+    }
+
+        function secure_data($data){
+            $data = htmlspecialchars($data);
+            $data = stripcslashes($data);
+            $data = trim($data);
+            return $data;
+        }
+?>
