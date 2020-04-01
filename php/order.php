@@ -5,8 +5,29 @@ session_start();
     $query3 = $connexion->prepare("SELECT * FROM users WHERE id = ?");
     $query3->execute(array($_SESSION['id']));
     $result3 = $query3->fetch();
+
+    $query = $connexion->prepare("SELECT * FROM food");
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
     // var_dump($result3);
     // $_SESSION['id'] = $result3['id']
+    if(!empty($_POST) && isset($_POST))
+    {
+        $cfoodname = secure_data($_POST['cfoodname']);
+        // var_dump(die($cfoodname));
+        $numberfood = filter_var(secure_data($_POST['numberfood']), FILTER_VALIDATE_INT);
+        $moreinfo = secure_data($_POST['moreinfo']);
+        if (empty($numberfood))
+        {
+            $err = '<h3 class="err-msg">Une erreur a du se produire </h3>';
+        }
+        else
+        {
+            $query4 = $connexion->prepare("INSERT INTO commande(cfoodname,numberfood,moreinfo) VALUES(?,?,?)");
+            $result4 = $query4->execute(array($cfoodname,$numberfood,$moreinfo));
+            header("Location:ownOrderList.php?id=".$_SESSION['id']);
+        }
+    }
 
 ?>
 
@@ -45,35 +66,42 @@ session_start();
         </nav>
         <div class="welcome-box"  style="background: url('../images/img2.jpg') center no-repeat;background-size: cover;">
             <div class="welcome-text">
-                <h3>Bienvenu(e) Chez HiVyFood</h3>
+                <h3><?php $order = 'Commande'; echo $order;?></h3>            
             </div>
         </div>
     </header>
     <section id="order">
         <div class="handler-box">
             <div class="form-add">
-                <form method="" action="">
+                <form method="POST" action="">
                     <h3>Commandes de <?= $result3['username']   ?></h3>
                     <div class="form-group">
-                        <label for="tit">Nombre de plat</label>
-                        <input type="number" class="form-input" id="tit">
-                    </div>
-                    <div class="form-group">
                         <label for="nameFood">Choix de votre plat</label>
-                        <select  id="foodName" class="form-input" >
-                            <option>Riz</option>
-                            <option value="">Attieke</option>
+                        <select  id="foodName" class="form-input" name="cfoodname">
+                            <?php foreach($result as $key => $value): ?>
+                                <option value="<?= $value['foodname'] ?>"><?= $value['foodname'] ?></option>
+                            <?php endforeach ?>
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="tit">Nombre de plat</label>
+                        <input type="number"  name="numberfood" class="form-input" id="tit">
+                    </div>
+                    <div class="form-group">
                         <label for="content">Des Précisons ?</label>
-                        <textarea  class="form-input" id="content" cols="30" rows="5" "></textarea>
+                        <textarea name="moreinfo" class="form-input" id="content" cols="30" rows="5" "></textarea>
                     </div>
                     <button type="submit" class="btn-more">Commander</button>
                 </form>
             </div>
             <div class="bg-image">
-                <h3>Merci pour Votre Commande</h3>
+                <?php if(isset($err)){
+                    echo $err;
+                }
+                else{
+                    echo "<h3>Merci pour Votre Commande</h3>";
+                } 
+                ?>
             </div>
         </div>
     </section>

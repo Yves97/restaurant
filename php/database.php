@@ -18,3 +18,10 @@
         echo print_r($array_name);
         echo '</pre>';
     }
+    
+    function secure_data($data){
+        $data = htmlspecialchars($data);
+        $data = stripcslashes($data);
+        $data = trim($data);
+        return $data;
+    }

@@ -1,7 +1,7 @@
 <?php
 session_start();
 require 'php/database.php';
-    if(isset($_GET['id'])){
+    if(isset($_GET['id']) && isset($_SESSION['id'])){
     // require 'php/register.php';
     $query = $connexion->prepare("SELECT * FROM food");
     $query->execute();
@@ -34,7 +34,7 @@ require 'php/database.php';
 <body>
     <header id="header">
         <nav class="navbar navbar-expand-sm fixed-top">
-            <a class="navbar-brand" href="index.html">HyviFood</a>
+            <a class="navbar-brand" href="<?= $_SERVER['PHP_SELF'] ?>">HyviFood</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
                 aria-expanded="false" aria-label="Toggle navigation"></button>
             <div class="collapse navbar-collapse" id="collapsibleNavId">
@@ -46,7 +46,7 @@ require 'php/database.php';
                         <a class="nav-link" href="php/ownOrderList.html">Voir mes commandes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="php/order.php">Passer une commande</a>
+                        <a class="nav-link" href="php/order.php?id=">Passer une commande</a>
                     </li>
                 </ul>
                 <p class="username"><?= 'Hello!  '.$result3['username'] ?></p>

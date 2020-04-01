@@ -17,14 +17,6 @@ session_start();
             header("Location:login.php");
         }
     }
-
-    function secure_data($data){
-        $data = htmlspecialchars($data);
-        $data = stripcslashes($data);
-        $data = trim($data);
-        return $data;
-    }
-
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +51,7 @@ session_start();
         </nav>
         <div class="welcome-box"  style="background: url('../images/img2.jpg') center no-repeat;background-size: cover;">
             <div class="welcome-text">
-                <h3>Bienvenu(e) Chez HiVyFood</h3>
+                <h3><?php $register = 'Inscription'; echo $register;?></h3>
             </div>
         </div>
     </header>
@@ -86,9 +78,15 @@ session_start();
                     <div class="form-group">
                         <input class="input_contact" type="password" name="password" placeholder="Votre Mot de Passe">
                     </div>
-                    <button type="submit" class="btn-more">SOUMETTRE</button>
+                    <button type="submit" class="btn-more">Soumettre</button>
                 </form>
+                <h4> J'ai deja un compte me 
+                    <a href="login.php">
+                        <button class="btn-reverse">Connecter</button>
+                    </a>
+                </h4>
             </div>
+            
         </div>
     </section>
     <footer id="footer">

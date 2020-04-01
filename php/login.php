@@ -1,11 +1,6 @@
 <?php
 session_start();
     require 'database.php';
-    // $query2 = $connexion->prepare("SELECT * FROM users WHERE id = ?");
-    //         $query2->execute(array($_GET['id']));
-    //         $result2 = $query2->fetch();
-    //         $_SESSION['id'] = $result2['id'];
-    //         $_SESSION['username'] = $result2['username'];
     if(!empty($_POST) && isset($_POST))
     {
         $email = secure_data($_POST['email']);
@@ -28,13 +23,6 @@ session_start();
             // header("Location:index.php?id=".$_SESSION['id']);
         }
     }
-
-        function secure_data($data){
-            $data = htmlspecialchars($data);
-            $data = stripcslashes($data);
-            $data = trim($data);
-            return $data;
-        }
 ?>
 
 
@@ -70,7 +58,7 @@ session_start();
         </nav>
         <div class="welcome-box"  style="background: url('../images/img2.jpg') center no-repeat;background-size: cover;">
             <div class="welcome-text">
-                <h3>Bienvenu(e) Chez HiVyFood</h3>
+            <h3><?php $login = 'Connexion'; echo $login;?></h3>
             </div>
         </div>
     </header>

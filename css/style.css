@@ -148,7 +148,7 @@ li{
     margin-bottom: 3rem ;
 }
 
-.btn-more{
+.btn-more, .btn-reverse{
     border: 1px solid var(--primary-color);
     background: var(--primary-color);
     color: var(--color-white);
@@ -160,6 +160,16 @@ li{
 .btn-more:hover{
     background: var(--color-white);
     color: var(--primary-color);
+}
+
+.btn-reverse{
+    background-color: var(--color-white);
+    color: var(--primary-color);
+}
+
+.btn-reverse:hover{
+    background-color: var(--primary-color);
+    color: var(--color-white);
 }
 
 #foods{
