@@ -1,6 +1,12 @@
 <?php 
 session_start();
-require 'database.php';
+    require 'database.php';
+    // var_dump($_SESSION['id']);
+    $query3 = $connexion->prepare("SELECT * FROM users WHERE id = ?");
+    $query3->execute(array($_SESSION['id']));
+    $result3 = $query3->fetch();
+    // var_dump($result3);
+    // $_SESSION['id'] = $result3['id']
 
 ?>
 
@@ -47,7 +53,7 @@ require 'database.php';
         <div class="handler-box">
             <div class="form-add">
                 <form method="" action="">
-                    <h3>Commandes de <?= $_SESSION['username']   ?></h3>
+                    <h3>Commandes de <?= $result3['username']   ?></h3>
                     <div class="form-group">
                         <label for="tit">Nombre de plat</label>
                         <input type="number" class="form-input" id="tit">

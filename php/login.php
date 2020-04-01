@@ -1,4 +1,41 @@
+<?php
+session_start();
+    require 'database.php';
+    // $query2 = $connexion->prepare("SELECT * FROM users WHERE id = ?");
+    //         $query2->execute(array($_GET['id']));
+    //         $result2 = $query2->fetch();
+    //         $_SESSION['id'] = $result2['id'];
+    //         $_SESSION['username'] = $result2['username'];
+    if(!empty($_POST) && isset($_POST))
+    {
+        $email = secure_data($_POST['email']);
+        $password = secure_data($_POST['password']);
 
+        if ($email == '' || $password == '')
+        {
+            $err = '<h2 class="err-msg">Merci de bien remplir ces deux champs</h2>';
+        }
+        else
+        {
+            $request = $connexion->prepare("SELECT * FROM users WHERE email = ? AND password = ?");
+            $request->execute(array($email, $password));
+            $result2 = $request->fetch();
+            // render_array($result2);
+            $_SESSION['id'] = $result2['id'];
+            header('Location:../index.php?id='.$_SESSION['id']);
+            //var_dump($tab);
+            //$_SESSION = $tab;
+            // header("Location:index.php?id=".$_SESSION['id']);
+        }
+    }
+
+        function secure_data($data){
+            $data = htmlspecialchars($data);
+            $data = stripcslashes($data);
+            $data = trim($data);
+            return $data;
+        }
+?>
 
 
 <!DOCTYPE html>
@@ -72,41 +109,3 @@
 </body>
 </html>
 
-<?php
-session_start();
-    require 'database.php';
-    // $query2 = $connexion->prepare("SELECT * FROM users WHERE id = ?");
-    //         $query2->execute(array($_GET['id']));
-    //         $result2 = $query2->fetch();
-    //         $_SESSION['id'] = $result2['id'];
-    //         $_SESSION['username'] = $result2['username'];
-    if(!empty($_POST) && isset($_POST))
-    {
-        $email = secure_data($_POST['email']);
-        $password = secure_data($_POST['password']);
-
-        if ($email == '' || $password == '')
-        {
-            $err = '<h2 class="err-msg">Merci de bien remplir ces deux champs</h2>';
-        }
-        else
-        {
-            $request = $connexion->prepare("SELECT * FROM users WHERE email = ? AND password = ?");
-            $request->execute(array($email, $password));
-            $result2 = $request->fetch();
-            // render_array($result2);
-            $_SESSION['id'] = $result2['id'];
-            header('Location:../index.php?id='.$_SESSION['id']);
-            //var_dump($tab);
-            //$_SESSION = $tab;
-            // header("Location:index.php?id=".$_SESSION['id']);
-        }
-    }
-
-        function secure_data($data){
-            $data = htmlspecialchars($data);
-            $data = stripcslashes($data);
-            $data = trim($data);
-            return $data;
-        }
-?>

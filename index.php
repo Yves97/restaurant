@@ -6,7 +6,6 @@ require 'php/database.php';
     $query = $connexion->prepare("SELECT * FROM food");
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
-
     $query3 = $connexion->prepare("SELECT * FROM users WHERE id = ?");
     $query3->execute(array($_GET['id']));
     $result3 = $query3->fetch();
