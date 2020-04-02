@@ -1,6 +1,8 @@
 <?php
 session_start();
     require 'database.php';
+
+    //--> Traitement des informations reçues du formulaire
     if(!empty($_POST) && isset($_POST)){
         $username = secure_data($_POST['username']);
         $tel = secure_data($_POST['tel']);
