@@ -1,23 +1,25 @@
 <?php
 session_start();
     require 'database.php';
-    if(!empty($_POST) && isset($_POST))
-    {
+
+    //---> Traitement des données reçus du formulaire de connection
+    if(!empty($_POST) && isset($_POST)){
         $email = secure_data($_POST['email']);
         $password = secure_data($_POST['password']);
 
-        if ($email == '' || $password == '')
-        {
+        //---> cas d'erreur
+        if ($email == '' || $password == ''){
             $err = '<h2 class="err-msg">Merci de bien remplir ces deux champs</h2>';
         }
-        else
-        {
+
+        //---> cas de success du traitement
+        else{
             $request = $connexion->prepare("SELECT * FROM users WHERE email = ? AND password = ?");
             $request->execute(array($email, $password));
             $result2 = $request->fetch();
             // render_array($result2);
-            $_SESSION['id'] = $result2['id'];
-            header('Location:../index.php?id='.$_SESSION['id']);
+            $_SESSION['id'] = $result2['id']; //----> Utilisation de la superGlobel $_SESSION pour transmettre la donnée vers d'autres pages(Identifiant de l'user)
+            header('Location:../index.php?id='.$_SESSION['id']); //-> redirection vers la page d'accueil avec la session de l'user courant de l'url
             //var_dump($tab);
             //$_SESSION = $tab;
             // header("Location:index.php?id=".$_SESSION['id']);
@@ -82,6 +84,7 @@ session_start();
                     </a>
                 </h4>
                 <?php
+                    //--> En cas d'erreur lors du traitement
                     if(isset($err)){
                         echo $err;
                     }

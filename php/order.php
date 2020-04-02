@@ -2,14 +2,17 @@
 session_start();
     require 'database.php';
     // var_dump($_SESSION['id']);
+    //--> Récupération de l'utilisateur courant via la Session
     $query3 = $connexion->prepare("SELECT * FROM users WHERE id = ?");
     $query3->execute(array($_SESSION['id']));
     $result3 = $query3->fetch();
 
+    //---> recupération des aliments pour le besoin du traitement des information du formulaire
     $query = $connexion->prepare("SELECT * FROM food");
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
     
+    //--> Traitement des données
     if(!empty($_POST) && isset($_POST))
     {
         $cfoodname = secure_data($_POST['cfoodname']);
@@ -25,7 +28,7 @@ session_start();
         {
             $query4 = $connexion->prepare("INSERT INTO commande(cfoodname,numberfood,moreinfo,userid) VALUES(?,?,?,?)");
             $result4 = $query4->execute(array($cfoodname,$numberfood,$moreinfo,$_SESSION['id']));
-            header("Location:ownOrderList.php?id=".$_SESSION['id']);
+            header("Location:ownOrderList.php?id=".$_SESSION['id']);  //--> redirection vers la page des commandes de l'utilisation courant via la session
         }
     }
 
@@ -77,6 +80,7 @@ session_start();
                     <div class="form-group">
                         <label for="nameFood">Choix de votre plat</label>
                         <select  id="foodName" class="form-input" name="cfoodname">
+                        <!-- affichages dans liste déroulante des aliments depuis la base donnée -->
                             <?php foreach($result as $key => $value): ?>
                                 <option value="<?= $value['foodname'] ?>"><?= $value['foodname'] ?></option>
                             <?php endforeach ?>

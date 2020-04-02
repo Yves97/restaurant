@@ -1,16 +1,23 @@
 <?php
 session_start();
 require 'php/database.php';
+
+    //---->Au premier chargement du site : Si la session et l'identifiant de l'user existent
     if(isset($_GET['id']) && isset($_SESSION['id'])){
     // require 'php/register.php';
+
+    //--> Récupération des aliments via la base de donnée
     $query = $connexion->prepare("SELECT * FROM food");
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    //-------------------------------------------///
     
+    //--> Récupération de l'utilisateur courant via la requete préparé et la SuperGlobal $_GET
     $query3 = $connexion->prepare("SELECT * FROM users WHERE id = ?");
     $query3->execute(array($_GET['id']));
     $result3 = $query3->fetch();
-    $_SESSION['id'] = $result3['id']
+    $_SESSION['id'] = $result3['id']  //--> Mise de l'utilisateur courant dans $_SESSION : début de session
+    //-------------------------------------------///
 ?>
 
 <!DOCTYPE html>
@@ -117,8 +124,8 @@ require 'php/database.php';
 
 <?php 
     }
+    //---> Si non on le redirige vers la page de connexion
     else{
         header('Location:php/login.php');
     }  
-    
 ?>
