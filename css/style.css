@@ -81,11 +81,6 @@ li{
 .username{
     padding: 0 1rem;
     color: var(--color-white);
-    /* position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%); */
-    
 }
 
 .welcome-box{
