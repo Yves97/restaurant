@@ -60,7 +60,10 @@ session_start();
         </nav>
         <div class="welcome-box"  style="background: url('../images/img2.jpg') center no-repeat;background-size: cover;">
             <div class="welcome-text">
-            <h3><?php $login = 'Connexion'; echo $login;?></h3>
+                <h3><?php $login = 'Connexion'; echo $login;?></h3>
+                <div id="scroll-invitation">
+                    <a href="#register"><span></span></a>
+                </div>
             </div>
         </div>
     </header>

@@ -53,6 +53,9 @@ session_start();
         <div class="welcome-box"  style="background: url('../images/img2.jpg') center no-repeat;background-size: cover;">
             <div class="welcome-text">
                 <h3><?php $register = 'Inscription'; echo $register;?></h3>
+                <div id="scroll-invitation">
+                    <a href="#register"><span></span></a>
+                </div>
             </div>
         </div>
     </header>
@@ -77,7 +80,7 @@ session_start();
                         <input class="input_contact" type="email" name="email" placeholder="Email">
                     </div>
                     <div class="form-group">
-                        <input class="input_contact" type="password" name="password" placeholder="Votre Mot de Passe">
+                        <input class="input_contact" type="text" name="password" placeholder="Votre Mot de Passe">
                     </div>
                     <button type="submit" class="btn-more">Soumettre</button>
                 </form>

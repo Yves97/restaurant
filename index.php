@@ -48,7 +48,7 @@ require 'php/database.php';
                         <a class="nav-link" href="php/order.php">Passer une commande</a>
                     </li>
                 </ul>
-                <p class="username mt-2"><?= 'Hello!  '.$result3['username'] ?></p>
+                <p class="p-user mt-2 text-white pr-5">Hello !<span class="username"><?= $result3['username'] ?>  </span></p>
                 <div>
                     <form action="php/disconnect.php" method="GET">
                         <button type="submit" class="btn-reverse">Déconnection</button>
@@ -58,7 +58,10 @@ require 'php/database.php';
         </nav>
         <div class="welcome-box" style="background: url('images/img2.jpg') center no-repeat;background-size: cover;">
             <div class="welcome-text">
-                <h3>Bienvenu(e) Chez HiVyFood</h3>
+                <h3>Bienvenu(e) Chez HiVyFood <span class="username-color"><?= $result3['username'] ?></span></h3>
+                <div id="scroll-invitation">
+                    <a href="#about"><span></span></a>
+                </div>
             </div>
         </div>
     </header>
