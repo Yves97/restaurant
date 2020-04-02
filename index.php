@@ -41,12 +41,12 @@ require 'php/database.php';
                         <a class="nav-link" href="php/order.php">Passer une commande</a>
                     </li>
                 </ul>
-                <p class="username"><?= 'Hello!  '.$result3['username'] ?></p>
-            </div>
-            <div>
-                <form action="php/disconnect.php" method="GET">
-                    <button type="submit">deconnection</button>
-                </form>
+                <p class="username mt-2"><?= 'Hello!  '.$result3['username'] ?></p>
+                <div>
+                    <form action="php/disconnect.php" method="GET">
+                        <button type="submit" class="btn-reverse">Déconnection</button>
+                    </form>
+                </div>
             </div>
         </nav>
         <div class="welcome-box" style="background: url('images/img2.jpg') center no-repeat;background-size: cover;">
