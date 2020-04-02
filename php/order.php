@@ -9,11 +9,11 @@ session_start();
     $query = $connexion->prepare("SELECT * FROM food");
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
-    // var_dump($result3);
-    // $_SESSION['id'] = $result3['id']
+    
     if(!empty($_POST) && isset($_POST))
     {
         $cfoodname = secure_data($_POST['cfoodname']);
+        // $get_food_name = $_GET['cfoodname'];
         // var_dump(die($cfoodname));
         $numberfood = filter_var(secure_data($_POST['numberfood']), FILTER_VALIDATE_INT);
         $moreinfo = secure_data($_POST['moreinfo']);
@@ -23,8 +23,8 @@ session_start();
         }
         else
         {
-            $query4 = $connexion->prepare("INSERT INTO commande(cfoodname,numberfood,moreinfo) VALUES(?,?,?)");
-            $result4 = $query4->execute(array($cfoodname,$numberfood,$moreinfo));
+            $query4 = $connexion->prepare("INSERT INTO commande(cfoodname,numberfood,moreinfo,userid) VALUES(?,?,?,?)");
+            $result4 = $query4->execute(array($cfoodname,$numberfood,$moreinfo,$_SESSION['id']));
             header("Location:ownOrderList.php?id=".$_SESSION['id']);
         }
     }
@@ -55,9 +55,9 @@ session_start();
                     <li class="nav-item active">
                         <a class="nav-link" href="register.html">S'enregister</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="#">Voir mes commandes</a>
-                    </li>
+                    </li> -->
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="#">Passer une commande</a>
                     </li> -->

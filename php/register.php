@@ -1,7 +1,6 @@
 <?php
 session_start();
     require 'database.php';
-    
     if(!empty($_POST) && isset($_POST)){
         $username = secure_data($_POST['username']);
         $tel = secure_data($_POST['tel']);

@@ -1,3 +1,22 @@
+<?php 
+session_start();
+    require 'database.php';
+    // var_dump($_SESSION['id']);
+    if(isset($_SESSION['id'])){
+        $joinquery = "SELECT commande.cfoodname, commande.numberfood ,commande.userid, users.id FROM commande,users WHERE commande.userid = users.id";
+        $query5 = $connexion->prepare($joinquery);
+        $query5->execute();
+        $result5 = $query5->fetchAll();
+        // render_array($result5);
+
+        $query = $connexion->prepare("SELECT commande.cfoodname, food.foodname, food.price FROM commande, food WHERE commande.cfoodname = food.foodname");
+        $query->execute();
+        $result = $query->fetch();
+session_destroy();
+    // render_array($result);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,21 +43,18 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <?php foreach($result5 as $key => $value): ?>
                         <tr>
-                            <td scope="row">Alloco</td>
-                            <td>3</td>
-                            <td>7000</td>
+                            <td scope="row"><?= $value['cfoodname'] ?></td>
+                            <td><?= $value['numberfood'] ?></td>
+                            <td><?=  $value['numberfood'] * $result['price'] ?></td>
                         </tr>
-                        <tr>
-                            <td scope="row">Rice</td>
-                            <td>7</td>
-                            <td>15000</td>
-                        </tr>
+                    <?php endforeach ?>
                     </tbody>
             </table>
-            <a href="../index.html">
+            <form method="GET" action="disconnect.php">
                 <button class="btn-more">Retour a la page d'accueil</button>
-            </a>
+            </form>
         </div>
         
     </section>
@@ -49,3 +65,9 @@
     <script src="js/main.js"></script>
 </body>
 </html>
+
+<?php } else{
+        header('Location:login.php');
+}
+
+?>

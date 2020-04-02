@@ -6,16 +6,11 @@ require 'php/database.php';
     $query = $connexion->prepare("SELECT * FROM food");
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    
     $query3 = $connexion->prepare("SELECT * FROM users WHERE id = ?");
     $query3->execute(array($_GET['id']));
     $result3 = $query3->fetch();
     $_SESSION['id'] = $result3['id']
-    // $_SESSION['id'] = $result2['id'];
-    // $_SESSION['username'] = $result2['username'];
-    // var_dump($_SESSION['id']);
-    // var_dump($_SESSION['username']);
-    // $_SESSION['username'] = $result2['username'];
-    // render_array($result2);
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +38,7 @@ require 'php/database.php';
                         <a class="nav-link" href="php/register.php">S'enregister</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="php/ownOrderList.html">Voir mes commandes</a>
+                        <a class="nav-link" href="php/ownOrderList.php?id=<?= $_SESSION['id'] ?>">Voir mes commandes</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="php/order.php?id=">Passer une commande</a>
@@ -52,7 +47,7 @@ require 'php/database.php';
                 <p class="username"><?= 'Hello!  '.$result3['username'] ?></p>
             </div>
             <div>
-                <form action="php/disconnect.php" method="POST">
+                <form action="php/disconnect.php" method="GET">
                     <button type="submit">deconnection</button>
                 </form>
             </div>
