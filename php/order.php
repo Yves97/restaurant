@@ -39,7 +39,6 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
     <!--***CSS ressources***-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <title>HyviFood</title>
@@ -47,7 +46,7 @@ session_start();
 <body>
     <header id="header">
         <nav class="navbar navbar-expand-sm fixed-top">
-            <a class="navbar-brand" href="../index.php">HyviFood</a>
+            <a class="navbar-brand" href="../index.php?id=<?= $result3['id'] ?>">HyviFood</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
                 aria-expanded="false" aria-label="Toggle navigation"></button>
             <div class="collapse navbar-collapse" id="collapsibleNavId">

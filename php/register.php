@@ -39,9 +39,9 @@ session_start();
                 aria-expanded="false" aria-label="Toggle navigation"></button>
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <!-- <li class="nav-item active">
-                        <a class="nav-link" href="#">Commander</a>
-                    </li> -->
+                    <li class="nav-item active">
+                        <a class="nav-link" href="login.php">Me connecter</a>
+                    </li>
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="ownOrderList.html">Voir mes commandes</a>
                     </li> -->

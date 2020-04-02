@@ -29,19 +29,16 @@ require 'php/database.php';
 <body>
     <header id="header">
         <nav class="navbar navbar-expand-sm fixed-top">
-            <a class="navbar-brand" href="<?= $_SERVER['PHP_SELF'] ?>">HyviFood</a>
+            <a class="navbar-brand" href="index.php?id=<?= $result3['id'] ?>">HyviFood</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
                 aria-expanded="false" aria-label="Toggle navigation"></button>
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="php/register.php">S'enregister</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="php/ownOrderList.php?id=<?= $_SESSION['id'] ?>">Voir mes commandes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="php/order.php?id=">Passer une commande</a>
+                        <a class="nav-link" href="php/order.php">Passer une commande</a>
                     </li>
                 </ul>
                 <p class="username"><?= 'Hello!  '.$result3['username'] ?></p>
@@ -121,7 +118,7 @@ require 'php/database.php';
 <?php 
     }
     else{
-        header('Location:php/register.php');
+        header('Location:php/login.php');
     }  
     
 ?>

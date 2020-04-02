@@ -47,9 +47,9 @@ session_start();
                 aria-expanded="false" aria-label="Toggle navigation"></button>
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <!-- <li class="nav-item active">
-                        <a class="nav-link" href="#">Commander</a>
-                    </li> -->
+                    <li class="nav-item active">
+                        <a class="nav-link" href="register.php">M'incrire</a>
+                    </li>
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="ownOrderList.html">Voir mes commandes</a>
                     </li> -->
@@ -76,6 +76,11 @@ session_start();
                     </div>
                     <button type="submit" class="btn-more">Se Connecter</button>
                 </form>
+                <h4> Je n'ai pas de compte
+                    <a href="register.php">
+                        <button class="btn-reverse">m'inscrire</button>
+                    </a>
+                </h4>
                 <?php
                     if(isset($err)){
                         echo $err;
