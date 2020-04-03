@@ -2,7 +2,9 @@
 
 :root{
     --primary-color: #5d4954;
+    --primary-admin-color:#f7c35b;
     --color-white: #fff;
+    --white-fade:rgb(224, 224, 224);
     --white-hover:antiquewhite;
     --color-black:#000;
     --default-transition:all .3s;
@@ -31,6 +33,7 @@ html{
 body{
     box-sizing: border-box;
     font-size: 1.6rem;
+    position: relative;
 }
 
 a,a:hover{
@@ -89,7 +92,7 @@ li{
     text-shadow: 0 0 5px var(--white-hover);
 }
 
-.welcome-box{
+.welcome-box,.main-login-box{
     height: 100vh;
     position: relative;
     padding: 1rem;
@@ -201,7 +204,7 @@ li{
     margin-bottom: 3rem ;
 }
 
-.btn-more, .btn-reverse{
+.btn-more, .btn-reverse, .btn-admin{
     border: 1px solid var(--primary-color);
     background: var(--primary-color);
     color: var(--color-white);
@@ -382,6 +385,66 @@ li{
     margin-bottom: 4rem;
 }
 
+/*------------------------------------*/
+
+
+/*----------->ADMIN<------------*/
+
+.main-login-box{
+    
+}
+
+.admin-login-card{
+    width: 40vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border: none;
+    background: var(--primary-admin-color);
+    transition: var(--default-transition);
+}
+
+.admin-card-message{
+    padding: 1rem;
+    text-align: center;
+    background-color: var(--primary-admin-color);
+}
+
+.admin-card-message h3{
+    font-size: 2.5rem;
+    color: var(--color-white);
+}
+
+.admin-card-form{
+    padding: 1rem;
+}
+
+.admin-input{
+    width: 100%;
+    padding: .7rem .7rem;
+    border: 1px solid var(--primary-admin-color);
+    outline: none;
+    border-radius: 15px;
+    transition: var(--default-transition);
+}
+
+.admin-input::placeholder{
+    color: var(--white-fade);
+}
+
+.btn-admin{
+    background-color: var(--color-white);
+    border: none;
+    border-radius: 15px;
+    color: var(--white-fade);
+    transition: var(--default-transition);
+}
+
+.btn-admin:hover{
+    background-color: var(--primary-admin-color);
+    color: var(--color-white);
+}
 
 /*------------------------------------*/
 
