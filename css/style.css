@@ -463,10 +463,13 @@ li{
 .sidebar ul li{
     margin-bottom: 2rem;
     transition: var(--default-transition);
+    cursor: pointer;
 }
 
 .sidebar ul li:hover{
     transform: translateX(2rem);
+    background: var(--color-white);
+    padding: 1rem;
 }
 
 .sidebar ul li:hover a{
@@ -475,6 +478,8 @@ li{
 
 .sidebar ul li a {
     color: var(--color-white);
+    display: block;
+    height: 100%;
 }
 
 /* .toggle-height{
@@ -510,6 +515,7 @@ li{
 .btn-delete{
     border: 1px solid red;
     color: red;
+    padding: .3rem .7rem;
 }
 
 .btn-delete:hover{
