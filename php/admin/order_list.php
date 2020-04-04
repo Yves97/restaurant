@@ -7,10 +7,6 @@ session_start();
         $query2 = $connexion->prepare("SELECT * FROM admin WHERE id = ?");
         $query2->execute(array($_SESSION['id']));
         $result2 = $query2->fetch();
-        
-        $query3 = $connexion->prepare("SELECT * FROM food");
-        $query3->execute();
-        $result3 = $query3->fetchAll();
 
 
 ?>
@@ -65,19 +61,15 @@ session_start();
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($result3 as $key => $value): ?>
                         <tr>
-                            <td scope="row"><?= $value['foodname'] ?></td>
-                            <td><?= $value['price'] ?></td>
+                            <td scope="row"></td>
+                            <td></td>
                             <td>
-                                <div style="background:url('../../images/<?= $value['imgfood'] ?>') center no-repeat;background-size: cover;height: 3rem;width: 3rem;"></div>
                             </td>
                             <td>
                                 <button class="btn-admin btn-delete">Supprimer</button>
                             </td>
-                            
                         </tr>
-                        <?php endforeach ?>
                     </tbody>
                 </table>
                 <!-- Button trigger modal 1 -->
