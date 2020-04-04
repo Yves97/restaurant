@@ -8,7 +8,10 @@ session_start();
         $query2->execute(array($_SESSION['id']));
         $result2 = $query2->fetch();
 
-
+        $query4 = $connexion->prepare('SELECT *,users.username,food.foodname FROM commande,users,food WHERE commande.userid = users.id AND food.id = users.id ORDER BY users.username');
+        $query4->execute();
+        $result4 = $query4->fetchAll();
+        // render_array($result4);
 ?>
 
 
@@ -54,22 +57,29 @@ session_start();
                 <table class="table table-striped table-food">
                     <thead class="item-title">
                         <tr>
-                            <th>Nom Du Plat</th>
-                            <th>Prix</th>
-                            <th>images</th>
-                            <th>Actions</th>
+                            <th>Nom</th>
+                            <th>Numéro de téléphone</th>
+                            <th>Commande</th>
+                            <th>Nombres de commandes</th>
+                            <th>Prix unitaire</th>
+                            <th>Précisions</th>
+                            <th>Date de commande</th>
+                            <th>Prix Total</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php foreach($result4 as $key => $value): ?>
                         <tr>
-                            <td scope="row"></td>
-                            <td></td>
-                            <td>
-                            </td>
-                            <td>
-                                <button class="btn-admin btn-delete">Supprimer</button>
-                            </td>
+                            <td scope="row"><?= $value['username'] ?></td>
+                            <td><?= $value['tel'] ?></td>
+                            <td><?= $value['cfoodname'] ?></td>
+                            <td><?= $value['numberfood'] ?></td>
+                            <td><?= $value['price'] ?></td>
+                            <td><?= $value['moreinfo'] ?></td>
+                            <td><?= $value['date_add'] ?></td>
+                            <td><?= $value['price'] * $value['numberfood'] ?></td>
                         </tr>
+                        <?php endforeach ?>
                     </tbody>
                 </table>
                 <!-- Button trigger modal 1 -->
@@ -119,7 +129,7 @@ session_start();
 </body>
 </html>
 
-<?php } else{
+<?php }else{
     header('Location:admin_log.php');   
     }
 ?>

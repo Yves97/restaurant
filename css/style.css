@@ -450,6 +450,7 @@ li{
 /*----------->ADMIN HOME<------------*/
 
 .main-home-box{
+    min-height: 100vh !important;
     background: linear-gradient(black,rgba(0, 0, 0, 0.171)),url('../images/reservation_1.jpg') center no-repeat;
     background-size: cover;
 }
