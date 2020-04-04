@@ -92,7 +92,7 @@ li{
     text-shadow: 0 0 5px var(--white-hover);
 }
 
-.welcome-box,.main-login-box, .main-home-box{
+.welcome-box,.main-login-box{
     height: 100vh;
     position: relative;
     padding: 1rem;
@@ -447,12 +447,17 @@ li{
     color: var(--color-white);
 }
 
-/*----------->ADMIN HOME<------------*/
+/*----------->ADMIN<------------*/
 
 .main-home-box{
     min-height: 100vh !important;
     background: linear-gradient(black,rgba(0, 0, 0, 0.171)),url('../images/reservation_1.jpg') center no-repeat;
     background-size: cover;
+    padding: 2rem 0;
+}
+
+.main-home-delete{
+    padding: 2rem 0;
 }
 
 .sidebar{
@@ -609,6 +614,17 @@ li{
 label[for="imgfood"]{
     color: var(--color-white);
 }
+
+.box-delete-action{
+    position: absolute;
+    bottom: 1rem;
+}
+
+.box-delete-action p{
+    font-size: 1.8rem;
+    color: var(--color-white);
+}
+
 
 
 

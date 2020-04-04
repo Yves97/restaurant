@@ -2,6 +2,8 @@
 session_start();
     require '../database.php';
     // var_dump($_SESSION['id']);
+
+    //--> Si l'user n'est pas connecté
     if(!($_SESSION['id'] == NULL)) {
         //--> Selection de l'admin courant
         $query2 = $connexion->prepare("SELECT * FROM admin WHERE id = ?");
@@ -11,8 +13,6 @@ session_start();
         $query3 = $connexion->prepare("SELECT * FROM food");
         $query3->execute();
         $result3 = $query3->fetchAll();
-
-
 ?>
 
 
@@ -66,17 +66,18 @@ session_start();
                     </thead>
                     <tbody>
                         <?php foreach($result3 as $key => $value): ?>
-                        <tr>
-                            <td scope="row"><?= $value['foodname'] ?></td>
-                            <td><?= $value['price'] ?></td>
-                            <td>
-                                <div style="background:url('../../images/<?= $value['imgfood'] ?>') center no-repeat;background-size: cover;height: 3rem;width: 3rem;"></div>
-                            </td>
-                            <td>
-                                <button class="btn-admin btn-delete">Supprimer</button>
-                            </td>
-                            
-                        </tr>
+                            <tr>
+                                <td scope="row"><?= $value['foodname'] ?></td>
+                                <td><?= $value['price'] ?></td>
+                                <td>
+                                    <div style="background:url('../../images/<?= $value['imgfood'] ?>') center no-repeat;background-size: cover;height: 3rem;width: 3rem;"></div>
+                                </td>
+                                <td>
+                                    <a href="admin_delete.php?id=<?= $value['id'] ?>">
+                                        <button class="btn-admin btn-delete">Supprimer</button>
+                                    </a>
+                                </td>
+                            </tr>
                         <?php endforeach ?>
                     </tbody>
                 </table>

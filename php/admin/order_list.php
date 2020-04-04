@@ -2,6 +2,7 @@
 session_start();
     require '../database.php';
     // var_dump($_SESSION['id']);
+    //--> Si l'user n'est pas connecté
     if(!($_SESSION['id'] == NULL)) {
         //--> Selection de l'admin courant
         $query2 = $connexion->prepare("SELECT * FROM admin WHERE id = ?");
