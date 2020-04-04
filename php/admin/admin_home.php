@@ -99,19 +99,22 @@ session_start();
                             </div>
                             <div class="modal-body">
                                 <div class="admin-add-card">
-                                    <form action="" method="">
+                                    <form action="add_item.php" method="POST" enctype="multipart/form-data">
                                         <div class="form-group">
-                                            <input type="text" name="" class="input-add" id="" placeholder="Nom du plat">
+                                            <input type="text" name="foodname" class="input-add" id="" placeholder="Nom du plat">
                                         </div>
                                         <div class="form-group">
-                                            <input type="number" name="" class="input-add" id="" placeholder="prix">
+                                            <input type="number" name="price" class="input-add" id="" placeholder="prix">
                                         </div>
                                         <div class="form-group">
                                             <label for="imgfood">Image du plat</label>
-                                            <input type="file" placeholder="image du plat" class="input-add" id="imgfood">
+                                            <input type="file"  name="imgfood" placeholder="image du plat" class="input-add" id="imgfood">
                                         </div>
                                         <button type="submit" class="btn-admin btn-add">Ajouter</button>
                                     </form>
+                                    <?php if(isset($errimg)){
+                                        echo $errimg;
+                                    }  ?>
                                 </div>
                             </div>
                         </div>

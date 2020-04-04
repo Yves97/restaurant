@@ -8,6 +8,8 @@
     --white-hover:antiquewhite;
     --color-black:#000;
     --default-transition:all .3s;
+    --danger-btn: #dc3545;
+    --success-btn : #28a745;
 }
 
 
@@ -45,7 +47,7 @@ li{
 }
 
 .err-msg{
-    color: red !important;
+    color: var(--danger-btn) !important;
     margin: 2rem 0 2rem;
 }
 
@@ -572,14 +574,29 @@ li{
 }
 
 .btn-delete{
-    border: 1px solid red;
-    color: red;
+    font-size: 1.2rem;
+    border: 1px solid var(--danger-btn);
+    color: var(--color-white);
+    background: var(--danger-btn);
     padding: .3rem .7rem;
 }
 
 .btn-delete:hover{
-    color:var(--color-white);
-    background: red;
+    color: var(--danger-btn);
+    background: var(--color-white);
+}
+
+.btn-save{
+    font-size: 1.2rem;
+    padding: .3rem .7rem;
+    background: var(--success-btn);
+    color: var(--color-white);
+    transition: var(--default-transition);
+}
+
+.btn-save:hover{
+    background: var(--color-white);
+    color: var(--success-btn);
 }
 
 .admin-add-card{

@@ -33,14 +33,17 @@ session_start();
 <body>
     <div class="main-home-delete">
         <div class="container title">
-            <h3>Etes vous sur de vouloir supprimez ?</h3>
+            <h3>Etes vous sur de vouloir supprimer ?</h3>
             <div class="box-delete-info">
                 <div style="width:100%;height:70vh;background:linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.712)),url('../../images/<?= $result3['imgfood'] ?>') center no-repeat;background-size:100%;position: relative;padding: 1rem;">
                     <div class="box-delete-action">
                         <p><?= $result3['foodname'] ?></p>
                         <p><?= $result3['price'] ?></p>
                         <a href="delete_item.php?foodname=<?= $result3['foodname'] ?>">
-                            <button class="btn-admin btn-delete">Supprimer</button>
+                            <button class="btn-admin btn-save">Oui</button>
+                        </a>
+                        <a href="admin_home.php?id=<?= $_SESSION['id'] ?>">
+                            <button class="btn-admin btn-delete">Non</button>
                         </a>
                     </div>
                 </div>
