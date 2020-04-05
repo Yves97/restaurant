@@ -1,1 +1,1 @@
-> ### Project using Basic PHP.
+> ### Simple Project using Basic PHP.
