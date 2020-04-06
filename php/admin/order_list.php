@@ -65,8 +65,7 @@ session_start();
                             <th>Prix unitaire</th>
                             <th>Précisions</th>
                             <th>Date de commande</th>
-                            <th>Prix Total</th>
-                            <th>Actions</th>
+                            <th>Prix Total</th> 
                         </tr>
                     </thead>
                     <tbody>
