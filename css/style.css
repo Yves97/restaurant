@@ -17,6 +17,7 @@
 
 
 /************->FONTS*********<-*/
+@import url('https://fonts.googleapis.com/css?family=Audiowide|Cinzel+Decorative|Dancing+Script|Gotu|Great+Vibes|IM+Fell+French+Canon+SC|Indie+Flower|Monoton|Orbitron|Pacifico|Press+Start+2P|Sen&display=swap');
 /*------------------------------------*/
 
 /************->GENERAL*********<-*/
@@ -33,6 +34,7 @@ html{
 }
 
 body{
+    font-family: 'IM Fell French Canon SC', serif;
     box-sizing: border-box;
     font-size: 1.6rem;
     position: relative;
@@ -49,6 +51,20 @@ li{
 .err-msg{
     color: var(--danger-btn) !important;
     margin: 2rem 0 2rem;
+}
+
+.error-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+
+.error-box h3{
+    color: var(--primary-admin-color);
+    font-size: 4rem;
+    margin-bottom: 2rem;
 }
 
 /*------------------------------------*/

@@ -3,24 +3,11 @@ session_start();
     require 'database.php';
     // var_dump($_SESSION['id']);
     if(isset($_SESSION['id'])){
-        $joinquery = "SELECT commande.cfoodname, commande.numberfood ,commande.userid, users.id FROM commande,users WHERE commande.userid = ? AND users.id = ?";
+        $joinquery = "SELECT commande.cfoodname, commande.numberfood ,commande.userid, users.id,food.price FROM commande,users,food WHERE commande.userid = ? AND commande.cfoodname = food.foodname";
         $query5 = $connexion->prepare($joinquery);
-        $query5->execute(array($_SESSION['id'],$_GET['id']));
+        $query5->execute(array($_SESSION['id']));
         $result5 = $query5->fetchAll();
-        $_SESSION['resultid'] = $result5;
-        // render_array($_SESSION['resultid']);
-
-
-        // $query_al = $connexion->prepare("SELECT * FROM food WHERE food.id = ? AND food.foodname =");
-        // $query_al->execute(array($_SESSION['id']));
-        // $result_al = $query_al->fetchAll(PDO::FETCH_ASSOC);
-        // render_array($result_al);
-
-        $query = $connexion->prepare("SELECT commande.cfoodname,commande.userid, food.foodname, food.price , users.username FROM commande, food, users WHERE commande.cfoodname = food.foodname AND commande.id = (users.id = ?) AND commande.userid = ?");
-        $query->execute(array($_SESSION['id'],$_GET['id']));
-        $result = $query->fetch();
-        // session_destroy();
-        // render_array($result);
+        // render_array($result5);
     //-------------------------------------------///
 
 ?>
@@ -55,7 +42,7 @@ session_start();
                         <tr>
                             <td scope="row"><?= $value['cfoodname'] ?></td>
                             <td><?= $value['numberfood'] ?></td>
-                            <td><?=  $value['numberfood'] * $result['price'] ?></td>
+                            <td><?=  $value['price'] * $value['numberfood'] ?></td>
                         </tr>
                     <?php endforeach ?>
                     </tbody>

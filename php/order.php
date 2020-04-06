@@ -16,6 +16,7 @@ session_start();
     if(!empty($_POST) && isset($_POST))
     {
         $cfoodname = secure_data($_POST['cfoodname']);
+
         // $get_food_name = $_GET['cfoodname'];
         // var_dump(die($cfoodname));
         $numberfood = filter_var(secure_data($_POST['numberfood']), FILTER_VALIDATE_INT);
@@ -28,7 +29,7 @@ session_start();
         {
             $query4 = $connexion->prepare("INSERT INTO commande(cfoodname,numberfood,moreinfo,userid) VALUES(?,?,?,?)");
             $result4 = $query4->execute(array($cfoodname,$numberfood,$moreinfo,$_SESSION['id']));
-            header("Location:ownOrderList.php?id=".$_SESSION['id']);  //--> redirection vers la page des commandes de l'utilisation courant via la session
+            header("Location:ownOrderList.php?commade.userid=".$_SESSION['id']);  //--> redirection vers la page des commandes de l'utilisation courant via la session
         }
     }
 

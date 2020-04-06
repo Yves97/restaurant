@@ -9,7 +9,7 @@ session_start();
         $query2->execute(array($_SESSION['id']));
         $result2 = $query2->fetch();
 
-        $query4 = $connexion->prepare('SELECT *,users.username,food.foodname FROM commande,users,food WHERE commande.userid = users.id AND food.id = users.id ORDER BY users.username');
+        $query4 = $connexion->prepare('SELECT *,users.username,food.foodname FROM commande,users,food WHERE commande.userid = users.id AND food.foodname = commande.cfoodname ORDER BY users.username');
         $query4->execute();
         $result4 = $query4->fetchAll();
         // render_array($result4);
@@ -66,6 +66,7 @@ session_start();
                             <th>Précisions</th>
                             <th>Date de commande</th>
                             <th>Prix Total</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -83,42 +84,6 @@ session_start();
                         <?php endforeach ?>
                     </tbody>
                 </table>
-                <!-- Button trigger modal 1 -->
-                <div class="text-right">
-                    <button type="button" class="btn-admin btn-add" data-toggle="modal" data-target="#modelId">
-                        Ajouter un aliment
-                    </button>
-                </div>
-                <!-- Modal 1-->
-                <div class="modal fade custom-modal" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h3 class="item-add-title">Ajout D'un plat</h3>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="admin-add-card">
-                                    <form action="" method="">
-                                        <div class="form-group">
-                                            <input type="text" name="" class="input-add" id="" placeholder="Nom du plat">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="number" name="" class="input-add" id="" placeholder="prix">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="imgfood">Image du plat</label>
-                                            <input type="file" placeholder="image du plat" class="input-add" id="imgfood">
-                                        </div>
-                                        <button type="submit" class="btn-admin btn-add">Ajouter</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
